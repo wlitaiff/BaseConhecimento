@@ -7,7 +7,7 @@ function pesquisar() {
       ("campo-pesquisa").value;
 
    if (campoPesquisa == "") {
-      section.innerHTML = "<p>Nada encontrado!</p>"
+      section.innerHTML = "<p>Nada encontrado! Necessário digitar uma tecnologia...</p>"
       return
    }
 
@@ -26,21 +26,21 @@ function pesquisar() {
          || tags.includes(campoPesquisa)) {
          // Constrói o HTML para o item do resultado da pesquisa
          resultados += `
-      <div class="item-resultado">
-        <h2>
-          <a href="#" target="_blank">${dado.titulo}</a>
-        </h2>
-        <p class="descricao-meta">${dado.descricao}</p>
-        <p class="descricao-meta">${dado.aplicacao}</p>
-        <a href=${dado.link} target="_blank">Mais informações</a>
-      </div>`;
+         <div class="item-resultado">
+            <h2>
+               <a href="#" target="_blank">${dado.titulo}</a>
+            </h2>
+            <p class="descricao-meta">${dado.descricao}</p>
+            <p class="descricao-meta">${dado.aplicacao}</p>
+            <a href=${dado.link} target="_blank">Mais informações</a>
+         </div>`;
       }
-   }
 
-   if (!resultados) {
-      resultados = "<p>Pesquisa não encontrada! Neceesário digitar uma informação.</p>"
-   }
+      if (!resultados) {
+         resultados = "<p>Tecnologia não encontrada! Tente novamente...</p>"
+      }
 
-   // Atribui o HTML gerado para a seção de resultados
-   section.innerHTML = resultados;
+      // Atribui o HTML gerado para a seção de resultados
+      section.innerHTML = resultados;
+   }
 }
